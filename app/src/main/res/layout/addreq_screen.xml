@@ -2,15 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="15dp">
 
         <RelativeLayout
+            android:id="@+id/header"
+            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -37,142 +40,231 @@
 
             </LinearLayout>
 
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/body"
+            android:layout_below="@id/header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="70sp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="10sp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textSize="15dp"
+                            android:text="Job Role">
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/et_jobrole"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:hint="Eg: Full Stack Developer"
+                            android:background="@drawable/bg_edittext">
+                        </EditText>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textSize="15dp"
+                            android:text="Company Name">
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/et_compname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:hint="Eg: impetusON"
+                            android:background="@drawable/bg_edittext">
+                        </EditText>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textSize="15dp"
+                            android:text="Company Location">
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/et_complocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:hint="Eg: Chennai, Tamil Nadu"
+                            android:background="@drawable/bg_edittext">
+                        </EditText>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textSize="15dp"
+                            android:text="Job Type">
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/et_jobtype"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:hint="Eg: On-site, WFH"
+                            android:background="@drawable/bg_edittext">
+                        </EditText>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textSize="15dp"
+                            android:text="Price per Closure">
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/et_priceperclosure"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:hint="Eg: 30K, 45.5K"
+                            android:background="@drawable/bg_edittext">
+                        </EditText>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textSize="15dp"
+                            android:text="Job Skills">
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/et_jobskills"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:hint="Eg: Enter required job skills"
+                            android:background="@drawable/bg_edittext">
+                        </EditText>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textSize="15dp"
+                            android:text="Job Description">
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/et_jobdesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:gravity="top"
+                            android:padding="12dp"
+                            android:hint="Eg: Experience, Salary, etc"
+                            android:background="@drawable/bg_edittext">
+                        </EditText>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
 
         </RelativeLayout>
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:background="@color/white">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_submitreq"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_button"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16dp">
+            </androidx.appcompat.widget.AppCompatButton>
 
-                <LinearLayout
-                    android:layout_marginTop="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textSize="15dp"
-                        android:text="Job Role">
-                    </TextView>
-
-                    <EditText
-                        android:id="@+id/et_jobrole"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="12dp"
-                        android:hint="Eg: Full Stack Developer"
-                        android:background="@drawable/bg_inputbox">
-                    </EditText>
+        </RelativeLayout>
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textSize="15dp"
-                        android:text="Company Name">
-                    </TextView>
-
-                    <EditText
-                        android:id="@+id/et_compname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="12dp"
-                        android:hint="Eg: impetusON"
-                        android:background="@drawable/bg_inputbox">
-                    </EditText>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textSize="15dp"
-                        android:text="Price per Closure">
-                    </TextView>
-
-                    <EditText
-                        android:id="@+id/et_priceperclosure"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="12dp"
-                        android:hint="Eg: 30K, 45.5K"
-                        android:background="@drawable/bg_inputbox">
-                    </EditText>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textSize="15dp"
-                        android:text="Job Description">
-                    </TextView>
-
-                    <EditText
-                        android:id="@+id/et_jobdesc"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:gravity="top"
-                        android:padding="12dp"
-                        android:hint="Eg: Skills, Required Experience, etc"
-                        android:background="@drawable/bg_inputbox">
-                    </EditText>
-
-
-                </LinearLayout>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_submitreq"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
-                    android:textColor="@color/white"
-                    android:textSize="16dp"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:textAllCaps="false"
-                    android:text="Submit"
-                    android:background="@drawable/bg_button">
-                </androidx.appcompat.widget.AppCompatButton>
-
-            </LinearLayout>
-
-
-        </ScrollView>
-
-
-
-
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

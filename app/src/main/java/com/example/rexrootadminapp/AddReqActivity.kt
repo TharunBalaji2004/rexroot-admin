@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
@@ -13,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class AddReqActivity : AppCompatActivity() {
     private val ivGoBack : ImageView get() = findViewById(R.id.iv_goback)
+    private val tvHeaderName : TextView get() = findViewById(R.id.tv_headername)
     private val etJobRole : EditText get() = findViewById(R.id.et_jobrole)
     private val etCompName : EditText get() = findViewById(R.id.et_compname)
     private val etCompLocation : EditText get() = findViewById(R.id.et_complocation)
@@ -20,19 +22,30 @@ class AddReqActivity : AppCompatActivity() {
     private val etPricePerClosure : EditText get() = findViewById(R.id.et_priceperclosure)
     private val etJobSkills : EditText get() = findViewById(R.id.et_jobskills)
     private val etJobDesc : EditText get() = findViewById(R.id.et_jobdesc)
-    private val btnSubmitReg : AppCompatButton get() = findViewById(R.id.btn_submitreq)
+    private val btnSubmitReq : AppCompatButton get() = findViewById(R.id.btn_submitreq)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.addreq_screen)
         val firebaseDB = FirebaseDatabase.getInstance().reference
 
+        val jobId = intent.getStringExtra("jobId")
+        etJobRole.setText(intent.getStringExtra("jobRole"))
+        etCompName.setText(intent.getStringExtra("compName"))
+        etPricePerClosure.setText(intent.getStringExtra("pricePerClosure"))
+        etCompLocation.setText(intent.getStringExtra("compLocation"))
+        etJobType.setText(intent.getStringExtra("jobType"))
+        etJobSkills.setText(intent.getStringExtra("jobSkills"))
+        etJobDesc.setText(intent.getStringExtra("jobDesc"))
+        val headerName = intent.getStringExtra("headerName")
+
+        if (headerName != null) tvHeaderName.text = headerName
+
         ivGoBack.setOnClickListener {
-            val intent = Intent(this@AddReqActivity,MainActivity::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
 
-        btnSubmitReg.setOnClickListener {
+        btnSubmitReq.setOnClickListener {
             val progressDialog = ProgressDialog(this@AddReqActivity)
             progressDialog.setMessage("Adding New Requirement...")
             progressDialog.setCancelable(false)
@@ -61,16 +74,26 @@ class AddReqActivity : AppCompatActivity() {
             if (reqKey != null) {
 
                 //val timestamp = -System.currentTimeMillis()
-                val key = "${firebaseDB.push().key}"
+                var documentId: String
+                if (headerName == null){
+                    documentId = "${firebaseDB.push().key}"
+                } else {
+                    documentId = jobId.toString()
+                }
 
-                reqData["jobId"] = key
+                Log.d("documentId",documentId)
+                reqData["jobId"] = documentId
 
-                firebaseDB.child("root").child(key).setValue(reqData) {databaseError , _->
+                firebaseDB.child("root").child(documentId).setValue(reqData) {databaseError , _->
                     progressDialog.dismiss()
 
                     if (databaseError != null){
                         Log.d("FirebaseDB", databaseError.message)
                         Toast.makeText(this@AddReqActivity,"Insertion Error occurred",Toast.LENGTH_SHORT).show()
+                    } else if (headerName != null) {
+                        Toast.makeText(this@AddReqActivity,"Requirement edited successfully!",Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@AddReqActivity,MainActivity::class.java)
+                        startActivity(intent)
                     } else {
                         Toast.makeText(this@AddReqActivity,"New Requirement added successfully!",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@AddReqActivity,MainActivity::class.java)
@@ -79,6 +102,10 @@ class AddReqActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 }

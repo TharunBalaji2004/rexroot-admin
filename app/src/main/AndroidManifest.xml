@@ -28,6 +28,10 @@
             android:name=".AddReqActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".JobReqScreenActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

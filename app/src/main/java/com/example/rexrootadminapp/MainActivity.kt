@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                             jobReqList.add(jobReqCard!!) //null check
                         }
                     }
-
+                    recyclerView.adapter = JobReqAdapter(jobReqList)
                 } else {
                     loadingProgressBar.visibility = ProgressBar.INVISIBLE
                     tvNoResults.visibility = View.VISIBLE
@@ -64,8 +64,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity,"Database error occured",Toast.LENGTH_SHORT).show()
             }
         })
-
-        recyclerView.adapter = JobReqAdapter(jobReqList)
 
         btnAddNewData.setOnClickListener {
             val intent = Intent(this@MainActivity,AddReqActivity::class.java)
